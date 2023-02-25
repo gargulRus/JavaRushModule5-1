@@ -1,0 +1,32 @@
+<span class="btnEditFormBack">Назад</span>
+<form th:object="${task}">
+    <label for="taskDescriptionEdit">Изменить задачу</label>
+    <input type="text" th:field="*{description}" id="taskDescriptionEdit" />
+    <select id="taskStatusEdit">
+        <option th:each="key : ${statusMap.keySet()}"
+                th:value="${key}"
+                th:data-value="${statusMap.get(key)}"
+                th:utext="${statusMap.get(key)}">
+        </option>
+    </select>
+    <input type="hidden" th:field="*{id}" id="taskIdEdit" />
+    <input type="hidden" th:field="*{status}" id="taskStatusIdEdit" />
+    <span class="ajaxUpdateTask" id="btnUpdate">Создать</span>
+</form>
+
+<script>
+    $(document).ready(function () {
+        let statusValue;
+        let taskStatusIdEdit = $('#taskStatusIdEdit').val();
+        $('#taskStatusEdit option').each(function () {
+            let testValue = $(this).data('value');
+            if (testValue == taskStatusIdEdit) {
+                statusValue = $(this).val();
+            }
+        });
+        console.log(statusValue);
+        $("#taskStatusEdit").val(statusValue);
+        updateTask();
+        editFormBack();
+    });
+</script>

@@ -1,0 +1,17 @@
+<form>
+  <label for="taskDescription">Добавить задачу</label>
+  <input type="text" id="taskDescription" />
+  <select id="taskStatus">
+    <option th:each="key : ${statusMap.keySet()}"
+            th:value="${key}"
+            th:utext="${statusMap.get(key)}">
+    </option>
+  </select>
+  <span class="ajaxCreateTask" id="btnCreate">Создать</span>
+</form>
+
+<script>
+  $(document).ready(function () {
+    createTask();
+  });
+</script>

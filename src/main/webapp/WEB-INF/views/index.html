@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>ToDoList JR 5-1</title>
+
+  <script type="text/javascript" src="/js/jquery-3.6.0.js"></script>
+
+</head>
+
+<body>
+  ToDoList JR 5-1
+  <br/>
+  <hr/>
+  <div id="ajax-tasks">
+    <!--  ajax-content here-->
+  </div>
+  <br/>
+  <hr/>
+  <div id="ajax-form">
+    <!--  ajax-content here-->
+  </div>
+  <script type="text/javascript" src="/js/core.js"></script>
+  <script>
+    $(document).ready(function () {
+      loadTasks();
+      loadForm();
+    });
+  </script>
+</body>
+
+</html>
