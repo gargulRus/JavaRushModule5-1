@@ -2,7 +2,9 @@
 <form th:object="${task}">
     <label for="taskDescriptionEdit">Изменить задачу</label>
     <input type="text" th:field="*{description}" id="taskDescriptionEdit" />
-    <select id="taskStatusEdit">
+    <br>
+    <label for="taskStatusEdit">Статус</label>
+    <select class="form-select" id="taskStatusEdit">
         <option th:each="key : ${statusMap.keySet()}"
                 th:value="${key}"
                 th:data-value="${statusMap.get(key)}"
@@ -11,7 +13,8 @@
     </select>
     <input type="hidden" th:field="*{id}" id="taskIdEdit" />
     <input type="hidden" th:field="*{status}" id="taskStatusIdEdit" />
-    <span class="ajaxUpdateTask" id="btnUpdate">Создать</span>
+    <br>
+    <span class="ajaxUpdateTask  btn btn-sm btn-primary" id="btnUpdate">Сохранить</span>
 </form>
 
 <script>

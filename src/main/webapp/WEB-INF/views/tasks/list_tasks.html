@@ -1,4 +1,4 @@
-<table>
+<table class="table table-hover">
   <tr>
     <th>ИД</th>
     <th>Описание</th>
@@ -10,17 +10,22 @@
     <td th:text="${task.getId()}"></td>
     <td th:text="${task.getDescription()}"></td>
     <td th:text="${task.getStatus()}"></td>
-    <td><span class="btnEdit" th:data-id="${task.getId()}">Редактировать</span></td>
-    <td><span class="btnDelete" th:data-id="${task.getId()}">Удалить</span></td>
+    <td><span class="btnEdit btn btn-sm btn-warning" th:data-id="${task.getId()}">Редактировать</span></td>
+    <td><span class="btnDelete btn btn-sm btn-danger" th:data-id="${task.getId()}">Удалить</span></td>
   </tr>
 </table>
-<div th:if="${tasks.totalPages > 0}" class="pagination"
-     th:each="pageNumber : ${pageNumbers}">
-  <a th:href="@{/tasks(size=${tasks.size}, page=${pageNumber})}"
-     th:text="${pageNumber}"
-     th:class=" ${pageNumber==tasks.number + 1} ? active"
-     th:classappend="ajaxPagination"></a>
+<div class="row align-content-lg-center">
+  <div th:if="${tasks.totalPages > 0}" class="pagination col-2"
+       th:each="pageNumber : ${pageNumbers}">
+    <a
+       th:href="@{/tasks(size=${tasks.size}, page=${pageNumber})}"
+       th:text="${pageNumber}"
+       th:class=" ${pageNumber==tasks.number + 1} ? active"
+       th:classappend="'ajaxPagination page-link'"></a>
+  </div>
 </div>
+
+
 <script>
   $(document).ready(function () {
     editTask();
