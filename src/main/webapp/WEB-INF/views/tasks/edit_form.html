@@ -1,4 +1,5 @@
 <span class="btnEditFormBack">Назад</span>
+<div id="editDescript-alert"></div>
 <form th:object="${task}">
     <label for="taskDescriptionEdit">Изменить задачу</label>
     <input type="text" th:field="*{description}" id="taskDescriptionEdit" />

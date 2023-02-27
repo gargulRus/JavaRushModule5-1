@@ -33,6 +33,13 @@ function createTask() {
         let taskDescription = $('#taskDescription').val();
         let taskStatus = $('#taskStatus').val();
 
+        if (taskDescription == "") {
+            $("#descript-alert").html("<div class=\"alert alert-danger\"><label>Добавьте описание!</label></div>");
+            return false;
+        } else {
+            $("#descript-alert").html("");
+        }
+
         $.ajax({
             url: "/tasks/create",
             type:"POST",
@@ -87,6 +94,13 @@ function updateTask() {
         let taskDescription = $('#taskDescriptionEdit').val();
         let taskStatus = $('#taskStatusEdit').val();
 
+        if (taskDescription == "") {
+            $("#editDescript-alert").html("<div class=\"alert alert-danger\"><label>Добавьте описание!</label></div>");
+            return false;
+        } else {
+            $("#editDescript-alert").html("");
+        }
+
         $.ajax({
             url: "/tasks/update",
             type:"POST",
@@ -139,6 +153,26 @@ function editFormBack() {
     $(".btnEditFormBack").bind("click", function () {
         loadTasks();
         loadForm();
+        return false;
+    });
+}
+
+function pagination() {
+    $(".ajaxPagination").unbind("click");
+    $(".ajaxPagination").bind("click", function () {
+
+        let url = $(this).attr("href")
+
+        $.ajax({
+            url: url,
+            dataType: "html",
+            beforeSend: function (data) {
+                $('#ajax-tasks').html('');
+            },
+            success: function (data) {
+                $('#ajax-tasks').html(data);
+            }
+        });
         return false;
     });
 }

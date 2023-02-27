@@ -30,23 +30,6 @@
   $(document).ready(function () {
     editTask();
     deleteTask();
-
-    $(".ajaxPagination").unbind("click");
-    $(".ajaxPagination").bind("click", function () {
-
-      let url = $(this).attr("href")
-
-      $.ajax({
-        url: url,
-        dataType: "html",
-        beforeSend: function (data) {
-          $('#ajax-tasks').html('');
-        },
-        success: function (data) {
-          $('#ajax-tasks').html(data);
-        }
-      });
-      return false;
-    });
+    pagination();
   });
 </script>
