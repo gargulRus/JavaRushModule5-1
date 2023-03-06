@@ -1,6 +1,6 @@
 function loadTasks() {
     $.ajax({
-        url: "/tasks",
+        url: "/gabjr51/tasks",
         dataType: "html",
         beforeSend: function (data) {
             $('#ajax-tasks').html('');
@@ -14,7 +14,7 @@ function loadTasks() {
 
 function loadForm() {
     $.ajax({
-        url: "/tasks/form",
+        url: "/gabjr51/tasks/form",
         dataType: "html",
         beforeSend: function (data) {
             $('#ajax-form').html('');
@@ -41,7 +41,7 @@ function createTask() {
         }
 
         $.ajax({
-            url: "/tasks/create",
+            url: "/gabjr51/tasks/create",
             type:"POST",
             async:false,
             dataType: "html",
@@ -68,7 +68,7 @@ function editTask() {
         let taskId = $(this).attr("data-id");
 
         $.ajax({
-            url: "/tasks/edit",
+            url: "/gabjr51/tasks/edit",
             type:"POST",
             async:false,
             dataType: "html",
@@ -102,7 +102,7 @@ function updateTask() {
         }
 
         $.ajax({
-            url: "/tasks/update",
+            url: "/gabjr51/tasks/update",
             type:"POST",
             async:false,
             dataType: "html",
@@ -129,7 +129,7 @@ function deleteTask() {
         let taskId = $(this).attr("data-id");
 
         $.ajax({
-            url: "/tasks/delete",
+            url: "/gabjr51/tasks/delete",
             type:"POST",
             async:false,
             dataType: "html",

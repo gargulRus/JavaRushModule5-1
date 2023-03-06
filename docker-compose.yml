@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+  db:
+    image: mysql
+    volumes:
+        - ./init:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: todo
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+
+  taskApp:
+    depends_on:
+      - db
+    build: .
+    image: test-img2
+    ports:
+      - "8080:8080"
